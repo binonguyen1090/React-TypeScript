@@ -28,6 +28,11 @@ export default function App(): JSX.Element {
     newTodos[index].complete = !newTodos[index].complete
     setTodos(newTodos)
   }
+  const removeTodo = (index: number):void => {
+    const newTodos: Itodo[] = [...todos ]
+    newTodos.splice(index,1)
+    setTodos(newTodos)
+  }
 
   return (
     <Fragment>
@@ -42,6 +47,7 @@ export default function App(): JSX.Element {
             <Fragment key={index}>
               <div style={{textDecoration: todo.complete ? 'line-through': ''}}>{todo.text}</div>
               <button type='button' onClick={() => completeTodo(index)} > {todo.complete ? 'Complete' : 'Incomplete' }</button>
+              <button type='button' onClick={() => removeTodo(index)} >Remove</button>
             </Fragment>
 
           ))
